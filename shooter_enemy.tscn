@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceqlofm85rpod"]
+
+[ext_resource type="PackedScene" uid="uid://dmgmfdbvxgbo3" path="res://enemy.tscn" id="1_xa7a6"]
+
+[node name="shooterEnemy" instance=ExtResource("1_xa7a6")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+scale = Vector2(0.6, 0.6)
+polygon = PackedVector2Array(-18.1818, 26.2626, 18.1818, 26.2626, 26.2626, 26.2626, 50.505, 2.0202, 42.4242, -26.2626, 10.101, -26.2626, 10.101, -26.2626, 0, -26.2626, -12.1212, -26.2626, -42.4242, -26.2626, -50.505, -2.0202, -26.2626, 26.2626)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -60)

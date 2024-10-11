@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyqtji7ipog61"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_ejo0x"]
+[ext_resource type="PackedScene" uid="uid://wkuk16sak88i" path="res://Player.tscn" id="2_mdd8y"]
+[ext_resource type="PackedScene" uid="uid://bwigoqlkoupac" path="res://diver_enemy.tscn" id="3_efdbj"]
+[ext_resource type="PackedScene" uid="uid://oxsqdsaptwv0" path="res://hud.tscn" id="4_7bydr"]
+[ext_resource type="PackedScene" uid="uid://dmgmfdbvxgbo3" path="res://enemy.tscn" id="4_itlpk"]
+[ext_resource type="PackedScene" uid="uid://dsp1qgt23gugk" path="res://game_over_screen.tscn" id="5_hccek"]
+[ext_resource type="Texture2D" uid="uid://c70y16o8i1okb" path="res://RymdSpelet/Sprites/Pickups/7e2d7bea4ac21388c4a96e1371f375c4ce00094b.jpg" id="7_p8heg"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ejo0x")
+enemy_scenes = Array[PackedScene]([ExtResource("4_itlpk"), ExtResource("3_efdbj")])
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="HUD" parent="UILayer" instance=ExtResource("4_7bydr")]
+
+[node name="GameOverScreen" parent="UILayer" instance=ExtResource("5_hccek")]
+visible = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="UILayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="UILayer/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="UILayer/ParallaxBackground"]
+position = Vector2(270, 482)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_p8heg")
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("2_mdd8y")]
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(263, 766)
+
+[node name="LaserContainer" type="Node2D" parent="."]
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

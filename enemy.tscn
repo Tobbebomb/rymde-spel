@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmgmfdbvxgbo3"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_isj0h"]
+[ext_resource type="Texture2D" uid="uid://cwqee1082o2y8" path="res://RymdSpelet/Sprites/Ships/Enemies/enemyBlue1.png" id="2_o0ebf"]
+
+[node name="Enemy" type="Area2D"]
+scale = Vector2(0.9, 0.9)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_isj0h")
+speed = 280
+hp = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_o0ebf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.21212, 0)
+polygon = PackedVector2Array(-15, 16, 15, 16, 8, 38, 25, 43, 47, -15, 30, -42, 9, -35, -9, -34, -28, -43, -45, -18, -24.2424, 41.2121, -7, 39)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -64)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

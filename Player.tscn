@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://wkuk16sak88i"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_jc8do"]
+[ext_resource type="Texture2D" uid="uid://duj3pyrdi2eb5" path="res://RymdSpelet/Sprites/Ships/player/player.png" id="2_mh7r6"]
+[ext_resource type="Texture2D" uid="uid://oothgyfyur66" path="res://RymdSpelet/Sprites/Ships/player/playerLeft.png" id="3_o4gmn"]
+[ext_resource type="Texture2D" uid="uid://dc0jnj5wylrvm" path="res://RymdSpelet/Sprites/Ships/player/playerRight.png" id="4_70lpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se1xi"]
+atlas = ExtResource("2_mh7r6")
+region = Rect2(0, 0, 99, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trn6j"]
+atlas = ExtResource("3_o4gmn")
+region = Rect2(0, 0, 90, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6poj7"]
+atlas = ExtResource("4_70lpq")
+region = Rect2(0, 0, 90, 77)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1neiy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se1xi")
+}],
+"loop": true,
+"name": &"defult",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trn6j")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6poj7")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_jc8do")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.791564, 1)
+polygon = PackedVector2Array(-14, -13, -8, -38, 7, -38, 12, -14, 35, 1, 40, -1, 44, 5, 42, -8, 50, -7, 46, 21, 13, 28, 9, 37, -10, 37, -15, 28, -41, 21, -45, 22, -49, -4, -43, -5, -44, -2, -36, 0)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -56)
+scale = Vector2(0.791564, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.96046e-08, -3.72529e-09)
+scale = Vector2(0.792889, 1.01453)
+sprite_frames = SubResource("SpriteFrames_1neiy")
+animation = &"defult"

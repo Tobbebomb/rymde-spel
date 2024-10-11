@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwigoqlkoupac"]
+
+[ext_resource type="PackedScene" uid="uid://dmgmfdbvxgbo3" path="res://enemy.tscn" id="1_5px4u"]
+[ext_resource type="Texture2D" uid="uid://blphl6iuvqtgn" path="res://RymdSpelet/Sprites/Ships/Enemies/enemyRed5.png" id="2_xx5mk"]
+
+[node name="DiverEnemy" instance=ExtResource("1_5px4u")]
+scale = Vector2(1.2, 1.2)
+speed = 400
+hp = 1
+points = 150
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xx5mk")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+position = Vector2(-3.8147e-06, 5)
+scale = Vector2(0.493207, 0.572674)
+polygon = PackedVector2Array(-12.1653, 27.9391, 14.1928, 27.9391, 20.2755, 19.2081, 28.3857, 19.2081, 40.551, -17.4619, 50.6887, -45.401, 30.4132, -45.401, -2.02754, -45.401, -30.4132, -45.401, -50.6887, -45.401, -28.3857, 19.2081, -18.2479, 20.9543)

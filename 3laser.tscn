@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://v1sd5acuof5g"]
+
+[ext_resource type="Script" path="res://laserupgrade.gd" id="1_j2ib8"]
+[ext_resource type="Texture2D" uid="uid://dyy55nbhdui0g" path="res://RymdSpelet/Sprites/Pickups/powerupYellow_star.png" id="2_kbfw0"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_j2ib8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kbfw0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1.19209e-07, 1.19209e-07)
+scale = Vector2(1.03977, 1.06641)
+polygon = PackedVector2Array(-14, -16, 15, -16, 16, 15, -17, 16, -16, -16)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
