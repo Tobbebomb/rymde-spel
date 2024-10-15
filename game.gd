@@ -8,14 +8,14 @@ extends Node2D
 @onready var enemy_container = $EnemyContainer
 @onready var hud = $UILayer/HUD
 @onready var gos = $UILayer/GameOverScreen
-
-
+@onready var pb = $ParallaxBackground
 @onready var player = $Player
 var score := 0:
 	set(value):
 		score = value
 		hud.score = score
 
+var scroll_speed = 100
 #var player = null
 
 func _ready():
@@ -31,6 +31,11 @@ func _process(delta):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
+
+
+	pb.scroll_offset.y += delta*scroll_speed
+	if pb.scroll_offset.y >= 5000:
+		pb.scroll_offset.y = 0
 
 func _on_player_laser_shot(laser_scene,location):
 	var laser = laser_scene.instantiate()

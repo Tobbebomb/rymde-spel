@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://pick up.gd" id="1_4oao0"]
 [ext_resource type="Texture2D" uid="uid://dfi4favgnb67c" path="res://RymdSpelet/Sprites/Pickups/powerupYellow_shield.png" id="2_h5lcc"]
 
-[node name="Area2D" type="Area2D"]
+[node name="shield" type="Area2D"]
 script = ExtResource("1_4oao0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,6 +15,7 @@ scale = Vector2(1.03977, 1.06641)
 polygon = PackedVector2Array(-13.4645, -16.8791, 20.1968, -16.8791, 20.1968, 18.7545, -21.1585, 19.6922, -21.1585, -16.8791)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-1, -24)
+position = Vector2(0, -30)
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

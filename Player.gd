@@ -1,19 +1,18 @@
 class_name Player extends CharacterBody2D
 
 @onready var animatedsprite :=$AnimatedSprite2D
-
+@onready var shieldsprite :=$shieldsprite
 signal laser_shot(laser_scene, location)
 signal killed
 
 @export var speed = 300
 @export var rate_of_fire := 0.25
-
+@export var hp = 1
 @onready var muzzle = $Muzzle
-
+@export var damage = 1
 var laser_scene = preload( "res://laser.tscn")
 
 var shoot_cd := false
-
 
 func _process(delta):
 	if Input.is_action_pressed("Shoot"):
@@ -36,7 +35,12 @@ func _physics_process(delta):
 	
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 
-
+func take_damage(amount):
+	hp -= amount
+	if hp < 2:
+		shieldsprite.visible=false
+	if hp <= 0:
+		die()
 
 
 func shoot():
